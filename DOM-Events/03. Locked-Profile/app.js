@@ -4,19 +4,22 @@ function lockedProfile () {
   ))
   ;
 
-}
+  function onToggle (e) {
+    const profile = e.target.parentElement;
+    const infoDif = profile.querySelector('div');
+    const isActive = profile.querySelector('input[type="radio"][value="unlock"]').checked;
 
-function onToggle (e) {
-  const infoDif = Array.from(e.target.parentElement.querySelectorAll('div'))
-    .find(d => d.id.includes('HiddenFields'));
+    if (isActive) {
+      if (e.target.textContent === 'Show more') {
+        infoDif.style.display = 'block';
+        e.target.textContent = 'Hide it';
+      } else {
+        infoDif.style.display = '';
+        e.target.textContent = 'Show more';
+      }
 
-  if (e.target.textContent === 'Show more') {
-    infoDif.style.display = 'block';
-    e.target.textContent = 'Hide it';
-  } else {
-    infoDif.style.display = '';
-    e.target.textContent = 'Show more';
+    }
+
   }
-
-
 }
+
